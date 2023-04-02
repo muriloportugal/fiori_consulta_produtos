@@ -1,0 +1,119 @@
+<mvc:View controllerName="consultaprodutos.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns="sap.m">
+  <Page id="page" title="{i18n>title}">
+    <content>
+      <FlexBox
+      justifyContent="Center"
+      id="inpBuscar">
+        <Input id="inpBusca"/>
+        <Button press="onPressBuscar" id="btBuscar" text="Buscar"/>
+      </FlexBox>
+      
+      <VBox
+        id="produtctBox"
+        visible="true"
+      >
+        <ObjectHeader
+          id="headerPanel"
+          title="{path: 'ModeloProduto>/product/product_name'}"
+          number="{ModeloProduto>/product/product_quantity}"
+        >
+          <attributes>
+            <ObjectAttribute
+              id="Atrib1"
+              title="Código de Barras"
+              text="{ModeloProduto>/code}"
+            >
+            </ObjectAttribute>
+
+            <ObjectAttribute
+              id="Atrib2"
+              title="Marca"
+              text="{ModeloProduto>/product/brands}"
+            >
+            </ObjectAttribute>
+          </attributes>
+        </ObjectHeader>
+
+        <Panel 
+          id="dadosComplementaresProduto"
+          headerText="Informações"
+        >
+          <content>
+            <HBox id="itemProd">
+              <Image 
+                id="imgProd" 
+                src="{path: 'ModeloProduto>/product/image_front_url'}"
+                width="5em"
+                press="onClickImage"
+              />
+              <VBox id="OutrosAttrProd">
+                <ObjectAttribute 
+                  id="attrProd1"
+                  title="Categoria"
+                  text="{ModeloProduto>/product/categories}"
+                />
+                <ObjectAttribute 
+                  id="attrProd2"
+                  title="Avisos"
+                  text="{ModeloProduto>/product/ecoscore_extended_data/impact/warnings}"
+                />
+                <ObjectAttribute 
+                  id="attrProd3"
+                  title="Local de fabricação"
+                  text="{ModeloProduto>/product/manufacturing_places}"
+                />
+              </VBox>
+            </HBox>
+          </content>
+        </Panel>
+        <Panel 
+          id="dadosIngredientesProduto"
+          headerText="Ingredientes"
+        >
+          <content>
+            <HBox id="ingredientProd">
+              <Image 
+                id="img2Prod" 
+                src="{path: 'ModeloProduto>/product/image_ingredients_url'}"
+                width="5em"
+                press="onClickImage"
+              />
+              <Table 
+                id="ingredientesTable"
+                items="{ModeloProduto>/product/ingredients}"
+              >
+                <columns>
+                  <Column id="col1">
+                    <Text id="textCol1" text="Descrição" />
+                  </Column>
+                  <Column id="col2">
+                    <Text id="textCol2" text="Porcentagem Mínima" />
+                  </Column>
+                  <Column id="col3">
+                    <Text id="textCol3" text="Porcentagem Máxima" />
+                  </Column>
+                  <Column id="col4">
+                    <Text id="textCol4" text="Porcentagem Estimada" />
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem id="Table1ListItems">
+                    <cells>
+                      <Text id="cell1" text="{ModeloProduto>text}"/>
+                      <Text id="cell2" text="{ModeloProduto>percent_min}"/>
+                      <Text id="cell3" text="{ModeloProduto>percent_max}"/>
+                      <Text id="cell4" text="{ModeloProduto>percent_estimate}"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+              
+            </HBox>
+          </content>
+        </Panel>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>
