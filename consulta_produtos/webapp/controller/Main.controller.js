@@ -19,7 +19,7 @@ sap.ui.define([
       },
       onPressBuscar: function () {
         let input;
-        input = this.byId("inpBusca");
+        input = this.byId("inpBusca")
         let valor = input.getValue();
 
         if (!valor) {
@@ -43,7 +43,7 @@ sap.ui.define([
 
           })
           .fail(() => {
-            console.log('erro ao chamado o backend');
+            console.log("erro ao chamado o backend");
           });
       },
 
